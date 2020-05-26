@@ -1,2 +1,3 @@
 # testing
-hmm
+# Attempt at making a script to auto install Arch
+# Uses Python for scripting.
