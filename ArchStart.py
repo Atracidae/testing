@@ -71,8 +71,8 @@ os.system("mkfs.ext4 /dev/sda2")
 os.system("mount /dev/sda2 /mnt")
 os.system("mkdir /mnt/boot")
 os.system("mount /dev/sda1 /mnt/boot")
-
-print('Partitions formatted and mounted')
+os.system("pacstrap /mnt base linux linux-firmware")
+print('\nPartitions formatted and mounted base packages installed\n')
 
 
 
