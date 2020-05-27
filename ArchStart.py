@@ -1,9 +1,15 @@
 """
-Arch MirrorList clean up and more.
+Arch Install Part 1.
 
 Do Not Run This Program!
 
+Assumes that drive 'sda' has been partitioned.  No need to format.
+
+Drive should be 20G  sda1: 300M,  sda2: 19G
+
 """
+
+
 import os
 import shutil
 
@@ -17,7 +23,7 @@ def _import_(file_):
     """
     count = 0
     dict_ = {}
-    with open(file, 'r') as f:
+    with open(file_, 'r') as f:
         for i in f:
             dict_[count] = i
             count += 1
@@ -57,9 +63,16 @@ file_to_save = '/etc/pacman.d/mirrorlist'
 
 to_file(file_to_save, mod_dict)
 
-print('Updated /etc/pacman.d/mirrorlist\n\n')
-print('Please Partition "/dev/sda" now\nPartitions should be as follows:')
-print('sda1 = 300M, sda2 = 19G')
+print('\n\n\nUpdated /etc/pacman.d/mirrorlist\n\n')
+
+os.system("datetimectl set-ntp true")
+os.system("mkfs.ext4 /dev/sda1")
+os.system("mkfs.ext4 /dev/sda2")
+os.system("mount /dev/sda2 /mnt")
+os.system("mkdir /mnt/boot")
+os.system("mount /dev/sda1 /mnt/boot")
+
+print('Partitions formatted and mounted')
 
 
 
