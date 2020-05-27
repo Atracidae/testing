@@ -88,7 +88,7 @@ os.system("genfstab -U /mnt >> /mnt/etc/fstab")
 
 end = time.time()
 total_time = end - start
-print(f'Finished for now!\n....\nThis process took {round(total_time*1_000_000, 5)} minutes.')
+print(f'Finished for now!\n....\nThis process took {round(total_time*.00001, 5)} minutes.')
 print('It Works!')
 # os.system("")
 # Could I perhaps use my existing functions to do this next part with a little bit of modification?
