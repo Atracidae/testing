@@ -76,10 +76,15 @@ os.system("mount /dev/sda1 /mnt/boot")
 print('\nPartitions formatted and mounted base packages installing now\n')
 print('Sleeping for 3 seconds.')
 time.sleep(3)
-os.system("pacstrap /mnt base linux linux-firmware")
+os.system("pacstrap /mnt base linux linux-firmware dhcpcd grub sudo nano vim vi man")
 print('Sleeping for 3 seconds.')
 time.sleep(3)
 os.system("genfstab -U /mnt >> /mnt/etc/fstab")
+
+# Seems to fail after going into arch-chroot....
+# Perhaps end the file here and start up a new file after using arch-chroot...?
+
+
 os.system("arch-chroot /mnt")
 os.system("ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime")
 os.system("hwclock --systohc")
