@@ -80,6 +80,8 @@ os.system("pacstrap /mnt base linux linux-firmware dhcpcd grub git sudo nano vim
 print('Sleeping for 3 seconds.')
 time.sleep(3)
 os.system("genfstab -U /mnt >> /mnt/etc/fstab")
+os.system("arch-chroot /mnt")
+os.system("git clone https://github.com/Atracidae/testing.git")
 
 
 # Seems to fail after going into arch-chroot....
