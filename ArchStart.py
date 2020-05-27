@@ -81,14 +81,9 @@ print('Sleeping for 3 seconds.')
 time.sleep(3)
 os.system("genfstab -U /mnt >> /mnt/etc/fstab")
 
+
 # Seems to fail after going into arch-chroot....
 # Perhaps end the file here and start up a new file after using arch-chroot...?
-
-
-os.system("arch-chroot /mnt")
-os.system("ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime")
-os.system("hwclock --systohc")
-
 
 
 end = time.time()
