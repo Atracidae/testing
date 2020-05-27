@@ -9,7 +9,7 @@ Drive should be 20G  sda1: 300M,  sda2: 19G
 
 """
 
-
+from time import sleep
 import os
 import shutil
 
@@ -71,9 +71,11 @@ os.system("mkfs.ext4 /dev/sda2")
 os.system("mount /dev/sda2 /mnt")
 os.system("mkdir /mnt/boot")
 os.system("mount /dev/sda1 /mnt/boot")
+print('\nPartitions formatted and mounted base packages installing now\n')
+print('Sleeping for 3 seconds.')
+sleep(3)
 os.system("pacstrap /mnt base linux linux-firmware")
-print('\nPartitions formatted and mounted base packages installed\n')
-
+print('Will commands here work!?')
 
 
 # os.system('fdisk /dev/sda')
