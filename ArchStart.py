@@ -1,9 +1,10 @@
 """
-Arch MirrorList clean up.
+Arch MirrorList clean up and more.
 
 Do Not Run This Program!
 
 """
+import os
 import shutil
 
 
@@ -44,8 +45,6 @@ def to_file(out_file, mod_dict_):
             f.write(i)
 
 
-
-
 file = '/etc/pacman.d/mirrorlist'
 
 shutil.copy2(file, f'{file}copy')
@@ -58,4 +57,13 @@ file_to_save = '/etc/pacman.d/mirrorlist'
 
 to_file(file_to_save, mod_dict)
 
-print('Finished')
+print('Updated /etc/pacman.d/mirrorlist\n\n')
+print('Please Partition "/dev/sda" now\nPartitions should be as follows:')
+print('sda1 = 300M, sda2 = 19G')
+
+
+
+# os.system('fdisk /dev/sda')
+# seems that "partx" command could be used here.
+# For now will Manually partition the disk
+# Should still use Python to format the file system.
