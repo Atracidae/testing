@@ -9,9 +9,11 @@ Drive should be 20G  sda1: 300M,  sda2: 19G
 
 """
 
-from time import sleep
+import time
 import os
 import shutil
+
+start = time.time()
 
 
 def _import_(file_):
@@ -65,7 +67,7 @@ to_file(file_to_save, mod_dict)
 
 print('\n\n\nUpdated /etc/pacman.d/mirrorlist\n\n')
 
-os.system("datetimectl set-ntp true")
+os.system("timedatectl set-ntp true")
 os.system("mkfs.ext4 /dev/sda1")
 os.system("mkfs.ext4 /dev/sda2")
 os.system("mount /dev/sda2 /mnt")
@@ -73,9 +75,25 @@ os.system("mkdir /mnt/boot")
 os.system("mount /dev/sda1 /mnt/boot")
 print('\nPartitions formatted and mounted base packages installing now\n')
 print('Sleeping for 3 seconds.')
-sleep(3)
+time.sleep(3)
 os.system("pacstrap /mnt base linux linux-firmware")
-print('Will commands here work!?')
+print('Sleeping for 3 seconds.')
+time.sleep(3)
+os.system("genfstab -U /mnt >> /mnt/etc/fstab")
+os.system("arch-chroot /mnt")
+os.system("ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime")
+os.system("hwclock --systohc")
+
+
+
+end = time.time()
+total_time = end - start
+print(f'Finished for now!\n....\nThis process took {round(total_time*1_000_000, 5)} minutes.')
+print('It Works!')
+# os.system("")
+# Could I perhaps use my existing functions to do this next part with a little bit of modification?
+
+
 
 
 # os.system('fdisk /dev/sda')
