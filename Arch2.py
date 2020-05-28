@@ -31,11 +31,6 @@ def net():
         f4.write(f"127.0.1.1     {host_name}.localdomain    {host_name}")
 
 
-
-
-
-
-
 print('Hello')
 time.sleep(.5)
 os.system("ln -sf /usr/share/zoneinfo/America/New_York")
@@ -43,6 +38,8 @@ os.system("hwclock --systohc")
 # Need to check if next part is working properly.
 locale()
 net()
+os.system("systemctl enable dhcpcd")
 os.system("passwd")
+os.system("pacman -Sy grub")
 print("Finished!")
 
