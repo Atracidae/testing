@@ -40,8 +40,9 @@ print('Hello')
 time.sleep(.5)
 os.system("ln -sf /usr/share/zoneinfo/America/New_York")
 os.system("hwclock --systohc")
-os.system("")
 # Need to check if next part is working properly.
 locale()
+net()
+os.system("passwd")
 print("Finished!")
 a = 12
