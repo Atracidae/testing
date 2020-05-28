@@ -39,7 +39,8 @@ locale()
 net()
 os.system("systemctl enable dhcpcd")
 os.system("passwd")
-os.system("grub-install /dev/sda")
-os.system("grub-mkconfig -o /dev/sda")
+# os.system("grub-install /dev/sda")
+# os.system("grub-mkconfig -o /dev/sda")
+
 print("\n\nFinished!\nPlease remove installation media and restart.")
 
