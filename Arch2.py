@@ -21,6 +21,21 @@ def locale():
         f2.write(to_write)
 
 
+def net():
+    host_name = input('Please Enter a HostName for system.')
+    with open('/etc/hostname', 'x') as f3:
+        f3.write(host_name)
+    with open('/etc/hosts', 'a') as f4:
+        f4.write(f"127.0.0.1     localhost")
+        f4.write(f"::1           localhost")
+        f4.write(f"127.0.1.1     {host_name}.localdomain {host_name}")
+
+
+
+
+
+
+
 print('Hello')
 time.sleep(.5)
 os.system("ln -sf /usr/share/zoneinfo/America/New_York")
@@ -28,4 +43,5 @@ os.system("hwclock --systohc")
 os.system("")
 # Need to check if next part is working properly.
 locale()
-print("finished")
+print("Finished!")
+a = 12
