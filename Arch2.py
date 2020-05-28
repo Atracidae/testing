@@ -26,9 +26,9 @@ def net():
     with open('/etc/hostname', 'x') as f3:
         f3.write(host_name)
     with open('/etc/hosts', 'a') as f4:
-        f4.write(f"127.0.0.1     localhost")
-        f4.write(f"::1           localhost")
-        f4.write(f"127.0.1.1     {host_name}.localdomain {host_name}")
+        f4.write(f"127.0.0.1     localhost\n")
+        f4.write(f"::1           localhost\n")
+        f4.write(f"127.0.1.1     {host_name}.localdomain    {host_name}")
 
 
 
@@ -45,4 +45,4 @@ locale()
 net()
 os.system("passwd")
 print("Finished!")
-a = 12
+
