@@ -70,6 +70,7 @@ to_file(file_to_save, mod_dict)
 
 print('\n\n\nUpdated /etc/pacman.d/mirrorlist\n\n')
 
+
 os.system("mkfs.ext4 /dev/sda1")
 os.system("mkfs.ext4 /dev/sda2")
 os.system("mount /dev/sda2 /mnt")
@@ -90,7 +91,6 @@ os.system("git clone https://github.com/Atracidae/testing.git")
 # Perhaps end the file here and start up a new file after using arch-chroot...?
 
 os.system("arch-chroot /mnt")
-os.system("git clone https://github.com/Atracidae/testing.git")
 end = time.time()
 total_time = end - start
 print(f'Finished for now!\n....\nThis process took {round(total_time*.0001, 5)} minutes.')
