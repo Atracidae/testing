@@ -22,7 +22,7 @@ def locale():
 
 
 def net():
-    host_name = input('Please Enter a HostName for system.')
+    host_name = input('Please Enter a HostName for system: >>  ')
     with open('/etc/hostname', 'x') as f3:
         f3.write(host_name)
     with open('/etc/hosts', 'a') as f4:
@@ -35,11 +35,11 @@ print('Hello')
 time.sleep(.5)
 os.system("ln -sf /usr/share/zoneinfo/America/New_York")
 os.system("hwclock --systohc")
-# Need to check if next part is working properly.
 locale()
 net()
 os.system("systemctl enable dhcpcd")
 os.system("passwd")
-os.system("pacman -Sy grub")
-print("Finished!")
+os.system("grub-install /dev/sda")
+os.system("grub-mkconfig -o /dev/sda")
+print("\n\nFinished!\nPlease remove installation media and restart.")
 
