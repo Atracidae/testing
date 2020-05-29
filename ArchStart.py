@@ -15,6 +15,8 @@ import shutil
 
 
 os.system("timedatectl set-ntp true")
+os.system("fdisk /dev/sda")
+
 
 start = time.time()
 
